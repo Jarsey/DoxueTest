@@ -14,80 +14,14 @@
     <!-- 学校列表 -->
     <section class="school-section">
         <div id="school-list">
-            <!-- 每个学校 -->
-            <div class="school-item">
-                <div class="school-logo">
-                    <img src="../../static/logo.png" alt="北京交通大学">
-                </div>
-                <div class="school-data">
-                    <div class="data-column">
-                        <p class="grey-text font-18">148</p>
-                        <p class="grey-text m-t-5">参访人数</p>
-                    </div>
-                    <div class="line"></div>
-                    <div class="data-column">
-                        <img src="../../static/icon-ppt.png" alt="PPT"></img>
-                        <a class="grey-text normal-link m-t-5">宣讲PPT</a>
-                    </div>
-                </div>
-                <button class="primary-btn-large">
-                    了解详情>
-                </button>
-            </div>
         </div>
     </section>
     <footer></footer>
+    <script type="text/javascript" src="../../bower_components/mockjs/dist/mock.js"></script>
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
-    <script src="../js/index.js"></script>
-    <script type="text/javascript">
-        var totalHeight = $(document).height(); //整个文档高度
-        var seeHeight = $(window).height(); //浏览器可视窗口高度
-        var thisBodyHeight = $(document.body).height(); //浏览器当前窗口文档body的高度
-        var totalBodyHeight = $(document.body).outerHeight(true); //浏览器当前窗口文档body的总高度 包括border padding margin
-        var thisWidth = $(window).width(); //浏览器当前窗口可视区域宽度
-        var thisDocumentWidth = $(document).width(); //浏览器当前窗口文档对象宽度
-        var thisBodyWidth = $(document.body).width(); //浏览器当前窗口文档body的宽度
-        var totalBodyWidth = $(document.body).outerWidth(true); //浏览器当前窗口文档body的总宽度 包括border padding margin
-        var scrollTop = $(window).scrollTop(); //浏览器可视窗口顶端距离网页顶端的高度（垂直偏移）
-        // console.log(totalHeight,seeHeight,thisBodyHeight,totalBodyHeight,thisWidth,thisDocumentWidth,thisBodyWidth,totalBodyWidth,scrollTop);
-        //添加滚动事件
-        const arr = [{
-            logoUrl: '../../static/logo.png',
-            num: 25,
-            linkHref: '',
-            cb: () => {}
-        }, {
-            logoUrl: '../../static/logo.png',
-            num: 256,
-            linkHref: '',
-            cb: () => {}
-        }, {
-            logoUrl: '../../static/logo.png',
-            num: 111,
-            linkHref: '',
-            cb: () => {}
-        }, {
-            logoUrl: '../../static/logo.png',
-            num: 137,
-            linkHref: '',
-            cb: () => {}
-        }, {
-            logoUrl: '../../static/logo.png',
-            num: 159,
-            linkHref: '',
-            cb: () => {}
-        }]
-        $(window).scroll(function() {
-            scrollTop = $(window).scrollTop();
-            totalHeight = $(document).height();
-            // console.log(scrollTop,seeHeight,totalHeight)
-            if (scrollTop + seeHeight + 50 > totalHeight) {
-                console.log(211)
-                let schoolList = new SchoolList();
-                schoolList.appendItem(arr);
-            }
-        })
-    </script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../js/main.min.js"></script>
+    <script src="../mock/api.js"></script>
 </body>
 
 </html>

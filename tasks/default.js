@@ -6,7 +6,14 @@ const autoprefixer = require('gulp-autoprefixer');
 const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
 const rename = require('gulp-rename');
+const connect = require('gulp-connect');
 
+gulp.task('webserver', function() {
+    connect.server({
+        livereload: true,
+        port: 3000
+    });
+});
 // HTML打包
 gulp.task('html', () => {
     return gulp.src('src/views/index.html')
@@ -31,8 +38,11 @@ gulp.task('js', () =>
     .pipe(babel({
         presets: ['@babel/preset-env']
     }))
+    .pipe(concat('main.js'))
     .pipe(uglify())
+    .pipe(rename({ suffix: '.min' }))
     .pipe(gulp.dest('build/js'))
 );
 
-gulp.task('default', gulp.series('html', 'css', 'js'));
+
+gulp.task('default', gulp.series('html', 'css', 'webserver'));
