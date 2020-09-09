@@ -1,11 +1,14 @@
 // List类
 class SchoolList {
-    constructor(listArr) {
-        this.listArr = listArr
-    }
-    initList() {
+    // constructor(initData) {
+    //     this.listArr = listArr
+    // }
+    // initList() {
+    //     this.appendItem(this.listArr)
+    // }
+    appendItem(arr) {
         const fragment = document.createDocumentFragment();
-        this.listArr.forEach((element) => {
+        arr.forEach((element) => {
             let { logoUrl, num, linkHref, cb } = element
             const item = new SchoolItem(logoUrl, num, linkHref, cb).createSchoolItem()
                 // 使用jq创建dom
@@ -98,5 +101,5 @@ const mockData = [{
     }
 ];
 // 初始化列表
-let schoolList = new SchoolList(mockData);
-schoolList.initList();
+let schoolList = new SchoolList();
+schoolList.appendItem(mockData);
