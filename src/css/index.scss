@@ -1,7 +1,7 @@
 $normalFont: "Microsoft YaHei";
 $normalColor: #999;
 $normalFontSize: 14px;
-.school-list {
+#school-list {
     display: grid;
     grid-template-columns: repeat(3, 230px);
     grid-gap: 10px;
