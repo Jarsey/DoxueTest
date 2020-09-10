@@ -14,6 +14,9 @@ class SchoolList {
       if (status === 'success' && data.status === 0) {
         this.totalCount = data.msg.count
         this.appendItem(data.msg.data)
+      } else {
+        // 加载失败
+        $('#school-list').append('<img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=242107528,387432333&fm=26&gp=0.jpg" alt="页面加载失败" width="600px"/>')
       }
     })
   }
