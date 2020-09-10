@@ -2,16 +2,28 @@ import '../css/listLoading.scss'
 import $ from 'jquery'
 import LoadingImg from '$static/loading.gif'
 class Loading {
-  switchLoadingShow (isShow) {
-    isShow ? this.showLoading() : this.hideLoading()
+  constructor () {
+    this.instance = null
+  }
+
+  appendLoading (isShow) {
+    isShow ? this.showLoading() : this.hiddenLoading()
   }
 
   showLoading () {
-    $('body').after(`<div class="listLoading"><img src="${LoadingImg}" class="loading-img" alt="加载中"/></div>`)
+    $('body').append(`<div id="listLoading"><img src="${LoadingImg}" class="loading-img" alt="加载中"/></div>`)
   }
 
-  hideLoading () {
-    $('.listLoading').remove()
+  hiddenLoading () {
+    $('#listLoading').remove()
+  }
+
+  static getInstance () {
+    if (!this.instance) {
+      this.instance = new Loading()
+    }
+    return this.instance
   }
 }
-export default Loading
+const loading = Loading.getInstance()
+export default loading

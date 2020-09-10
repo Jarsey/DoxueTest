@@ -1,20 +1,19 @@
 import $ from 'jquery'
 import IconPPT from '$static/icon-ppt.png'
-import Loading from './loading.js'
+import loading from './loading.js'
 // List类
 class SchoolList {
   constructor () {
     this.totalCount = 0
     this.listLength = 0
-    this.loading = new Loading()
   }
 
   // 获取节点数据，并显示于页面
   getListData () {
-    this.loading.switchLoadingShow(true)
+    loading.appendLoading(true)
     // 可传递下拉分页数据
     $.get('http://localhost:5371/api/list', (data, status) => {
-      //   this.loading.switchLoadingShow(false)
+      loading.appendLoading(false)
       if (status === 'success' && data.status === 0) {
         this.totalCount = data.msg.count
         this.appendItem(data.msg.data)
