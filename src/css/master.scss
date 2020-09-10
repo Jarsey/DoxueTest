@@ -1,0 +1,50 @@
+$normalFont: "Microsoft YaHei";
+$normalColor: #999;
+$normalFontSize: 14px;
+$darkColor: #101010;
+body {
+    background-color: #f8f9fa
+}
+
+.grey-text {
+    color: $normalColor;
+    font-family: $normalFont;
+}
+
+.font-18 {
+    font-size: 18px;
+}
+
+.font-14 {
+    font-size: 14px;
+}
+
+.normal-link {
+    &:hover {
+        color: $darkColor;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
+.primary-btn-large {
+    font-size: 18px;
+    color: $darkColor;
+    background-color: #fff;
+    width: 100%;
+    padding: 8px 0;
+    border: 1px solid #999;
+    border-radius: 25px;
+    &:hover {
+        cursor: pointer;
+        background-color: #e8e8e8;
+        border: 1px solid #e8e8e8;
+    }
+    &:focus {
+        outline: none;
+    }
+}
+
+.m-t-5 {
+    margin-top: 5px;
+}
