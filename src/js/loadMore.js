@@ -30,10 +30,8 @@ const registerLoadMore = () => {
 
   // 滚动事件触发
   $(window).unbind('scroll').bind('scroll', () => {
-    console.log('schoolList.listLength < schoolList.totalCount', schoolList.listLength < schoolList.totalCount)
-    console.log('schoolList.listLength', schoolList.listLength)
-    console.log('schoolList.totalCount', schoolList.totalCount)
     if (getScrollTop() + getClientHeight() >= getScrollHeight() && schoolList.listLength < schoolList.totalCount) {
+      // 获取数据
       schoolList.getListData()
     }
   })

@@ -20,16 +20,18 @@ module.exports = {
                 use: [
                     MiniCssExtractPlugin.loader,
                     'css-loader',
-                    'postcss-loader',
-                    // {
-                    //     loader: 'postcss-loader',
-                    //     options: {
-                    //         ident: 'postcss',
-                    //         plugins: [
-                    //             Autoprefixer(),
-                    //         ]
-                    //     }
-                    // },
+                    // 'postcss-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            postcssOptions: {
+                                ident: 'postcss',
+                                plugins: () => [
+                                    require('postcss-preset-env')()
+                                ]
+                            }
+                        }
+                    },
                     'sass-loader'
                 ]
             },
@@ -109,6 +111,7 @@ module.exports = {
             // 忽略文件
             ignored: /node_modules/
         },
+        open: true,
         port: 5371,
         hot: true,
         compress: true,
