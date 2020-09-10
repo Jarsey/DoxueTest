@@ -1,10 +1,9 @@
-const { resolve } = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const PostcssPresetEnv = require('postcss-preset-env');
-const TerserWebpackPlugin = require('terser-webpack-plugin');
-const Autoprefixer = require('autoprefixer');
+const { resolve } = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const TerserWebpackPlugin = require('terser-webpack-plugin')
+
 module.exports = {
     entry: {
         index: ['./src/js/index.js', './src/js/loadMore.js']
@@ -44,20 +43,10 @@ module.exports = {
                 test: /\.html$/,
                 loader: 'html-loader'
             },
-            // js
             {
                 test: /\.js$/,
-                exclude: /node_modules/,
-                // include: resolve(__dirname, 'src/js'),
-                loader: 'eslint-loader',
-                options: {
-                    fix: true
-                }
-            },
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                // include: resolve(__dirname, 'src/js'),
+                // exclude: /node_modules/,
+                include: resolve(__dirname, 'src'),
                 loader: 'babel-loader',
                 options: {
                     presets: [
@@ -66,10 +55,25 @@ module.exports = {
                             {
                                 useBuiltIns: 'usage',
                                 corejs: { version: 3 },
-                                targets: { chrome: '60', firefox: '60', ie: '9', safari: '10' }
+                                targets: {
+                                    chrome: '60',
+                                    firefox: '60',
+                                    ie: '9',
+                                    safari: '10'
+                                }
                             }
                         ]
                     ]
+                }
+            },
+            // js
+            {
+                test: /\.js$/,
+                // exclude: /node_modules/,
+                include: resolve(__dirname, 'src'),
+                loader: 'eslint-loader',
+                options: {
+                    fix: true
                 }
             }
         ]
@@ -86,7 +90,7 @@ module.exports = {
         // CSS分离
         new MiniCssExtractPlugin({
             filename: '[name].css',
-            chunkFilename: '[id].css',
+            chunkFilename: '[id].css'
         }),
         // CSS压缩
         new OptimizeCssAssetsPlugin()
@@ -105,13 +109,13 @@ module.exports = {
             // 忽略文件
             ignored: /node_modules/
         },
-        port: 8080,
+        port: 5371,
         hot: true,
         compress: true,
         // 使用dev-server的服务模拟假数据
-        before: function(app) {
-            app.get('/api/list', function(req, res) {
-                const dataList = require('./mock/dataList.js');
+        before(app) {
+            app.get('/api/list', (req, res) => {
+                const dataList = require('./mock/dataList.js')
                 res.json(dataList)
             })
         }
