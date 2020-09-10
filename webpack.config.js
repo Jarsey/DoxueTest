@@ -45,8 +45,8 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                // exclude: /node_modules/,
-                include: resolve(__dirname, 'src'),
+                exclude: /node_modules/,
+                // include: resolve(__dirname, 'src'),
                 loader: 'babel-loader',
                 options: {
                     presets: [
